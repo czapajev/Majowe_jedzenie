@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Majowe spiżania</title>
+		<meta name="description" content="" />
+		<meta name="author" content="czapajev" />
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="stylesheet" href= "css/style.css" type="text/css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</head>
+	<body>
+		<div>
+			<header>
+				<h1>Majowa spiżarnia</h1>
+			</header>
+			<nav>
+				<ul>
+					<li><a href="#" id="stock_report_show">Raport stanów</a></li>
+					<li><a href="#" id="add_shopping_show">Dodaj zakupy</a></li>
+					<li><a href="#" id="add_meal_show">Dodaj posiłek</a></li>
+					<li><a href="#" id="show_open">Otwarte</a></li>
+					<li><a href="#" id="settings_show">Ustawienia</a></li>
+					<li><a href="#" id="add_material_show">Dodaj materiał</a></li>
+					<li><a href="/">Raport stanów</a></li>
+				</ul>
+			</nav>
+			<div>
+				<div id="add_material">
+					<span class="close">Zamknij</span>
+					<h3>Dodaj produkt</h3>
+					<div>Marka:<br>
+					<input type="text" id="m_marka" /></div>
+					<div>Nazwa:<br>
+					<input type="text" id="m_nazwa" /></div>
+					<div id="cat_dropdown"></div>
+					Składniki:<br>
+					<input type="text" id="s_nazwa_1" class="skladnik" /> nowość:<input type="checkbox" id="s_1_now" /><a href="#" id="s_1" class="add_s">Dodaj kolejny</a><br>
+					<button id="save_mat">Zapisz</button>	
+				</div>
+				<div id="add_shopping">
+					<span class="close">Zamknij</span>
+					<h3>Dodaj zakupy</h3>
+					<div>Wybierz produkt z listy</div>
+					<div class="mat_list"></div>
+					<div>Nie ma na liście? <a href="#" id="add_material_show2">Dodaj materiał</a></div>
+					<button id="save_shopping">Zapisz zakupy</button>
+					
+				</div>
+				<div id="add_meal">
+					<span class="close">Zamknij</span>
+					<h3>Dodaj posiłek</h3>
+					<div>Wybierz produkt z listy</div>
+					<div class="mat_list"></div>
+					<div>Nie ma na liście? <a href="#" id="add_shopping_show2">Dodaj zakupy</a></div>
+					<button id="save_meal">Zapisz posiłek</button>
+				</div>
+				<div id="stock_report">
+					<span class="close">Zamknij</span>
+					<h3>Raport stanów</h3>
+					<div id="stock"></div>
+				</div>
+				<div id="settings">
+					<span class="close">Zamknij</span>
+					<h3>Ustawienia</h3>
+					<div>Obecne kategorie:</div>
+					<div id="cats"></div>
+					<div>Nowa kategoria:</div>
+					<div>Nazwa:<input type="text" id="category" /> Kolor:<input type="text" id="cat_color" /><button id="add_cat">Dodaj</button></div>
+				</div>
+				<div id="open">
+					<span class="close">Zamknij</span>
+					<h3>Otwarte słoiki</h3>
+
+				</div>
+			</div>
+			<footer>
+				<p>
+					&copy; Copyright  by czapajev
+				</p>
+			</footer>
+			<div id="status"></div>
+		</div>
+	</body>
+</html>
