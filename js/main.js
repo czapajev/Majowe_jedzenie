@@ -117,7 +117,7 @@ function show_list(fade, referer, move, button) {
 				});
 			}
 		});
-	button.click(function() {
+	button.unbind('click').click(function() {
 		saveData = '';
 		i=1;
 		$(referer + ' .mat_list_line').each(function() {
@@ -168,7 +168,7 @@ function show_cat() {
 			$('.color').blur(function() {
 				$(this).css('background-color', $(this).val());
 			});
-			$('.change_ss').click(function() {
+			$('.change_ss').unbind('click').click(function() {
 				color = $(this).parent().prev().prev().children().val();
 				ss = $(this).parent().prev().children().val();
 				cid = $(this).parent().parent().attr('id');
@@ -188,7 +188,7 @@ function show_cat() {
 				})
 				
 			});
-			$('.del_cat').click(function() {
+			$('.del_cat').unbind('click').click(function() {
 				cid = $(this).parent().parent().attr('id');
 				cthis = $(this).parent().parent();
 				sendData = "delete=true&cid=" + cid;
@@ -206,6 +206,23 @@ function show_cat() {
 					}
 				})
 			});
+			$('#cat_color, .color').ColorPicker({
+				onSubmit: function(hsb, hex, rgb, el) {
+					hex2 = "#" + hex;
+					$(el).val(hex2);
+					$(el).css('background-color', $(el).val());
+					$(el).ColorPickerHide();
+				},
+				onBeforeShow: function () {
+					$(this).ColorPickerSetColor(this.value);
+				}
+			})
+			.bind('keyup', function(){
+				$(this).ColorPickerSetColor(this.value);
+			})
+			.bind('focus', function(){
+				$(this).ColorPickerSetColor(this.value);
+			})
 		}
 	})
 }
@@ -215,13 +232,19 @@ add_s = function() {
 		$(this).attr('id','del_'+id).text('Usun').removeClass('add_s').addClass('del_s').unbind('click').click(del_s);
 		
 		nid = id+1;
-		$(this).next().after('<br>').after($('<a>').attr('href','#').attr('id','s_'+nid).addClass('add_s').text('Dodaj kolejny').click(add_s))
-		.after($('<input>').attr('type','checkbox').attr('id','s_'+nid+'_now'))
-		.after(' nowość ').after($('<input>').attr('type','text').attr('id','s_nazwa_'+nid).addClass('skladnik'));
+		
+		
+		$(this).parent().after($('<div>')
+		.append($('<input>').attr('type','text').attr('id','s_nazwa_'+nid).addClass('skladnik'))
+		.append(' nowość ')
+		.append($('<input>').attr('type','checkbox').attr('id','s_'+nid+'_now'))
+		.append($('<a>').attr('href','#').attr('id','s_'+nid).addClass('add_s').text('Dodaj kolejny').click(add_s))
+		
+		);
 }
 	
 del_s = function() {
-	alert('dupa');
+	$(this).parent().detach();
 	
 }
 hide = function(par) {
