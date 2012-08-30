@@ -48,29 +48,44 @@ $(document).ready(function() {
 	
 		
 	$('#add_material_show,#add_material_show2').click(function () {
-		$('#add_material').fadeIn();
+		$('#add_material').siblings().fadeOut(function() {
+			$('#add_material').fadeIn();
+		});
+		
 	});
 	$('#settings_show').click(function() {
-		show_cat();
+		$('#settings').siblings().fadeOut(function() {
+			show_cat();
+		});
+		
 	});
 	$('.close').click(function() {
 		$(this).parent().fadeOut();
 	});
 	$('#add_shopping_show, #add_shopping_show2').click(function() {
-		show_list(true,'#add_shopping','101', $('#save_shopping'));
+		$('#add_shopping').siblings().fadeOut(function() {
+			show_list(true,'#add_shopping','101', $('#save_shopping'));
+		});
+		
 	});
 	$('#add_meal_show').click(function() {
-		show_list(true,'#add_meal','601',$('#save_meal'));
+		$('#add_meal').siblings().fadeOut(function() {
+			show_list(true,'#add_meal','601',$('#save_meal'));
+		});
+		
 	});
 	
 	$('#stock_report_show').click(function() {
-		$.ajax({
-			url: "php/stock_report.php",
-			success: function(data) {
-				$('#stock').html(data);
-				$('#stock_report').fadeIn();
-			}
-		});
+		$('#stock_report').siblings().fadeOut(function() {
+			$.ajax({
+				url: "php/stock_report.php",
+				success: function(data) {
+					$('#stock').html(data);
+					$('#stock_report').fadeIn();
+				}
+			});
+		})
+		
 	});
 	$('#add_cat').click(function() {
 		sendData = "cat=" + $(this).prev().prev().val() + "&color=" + $(this).prev().val();

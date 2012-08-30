@@ -1,28 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
-		Remove this if you use the .htaccess -->
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>Majowe spiżania</title>
-		<meta name="description" content="" />
-		<meta name="author" content="czapajev" />
-		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
-		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
-		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-		<link rel="stylesheet" href= "css/style.css" type="text/css" />
-		<link rel="stylesheet" href="css/colorpicker.css" type="text/css" />
-		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
-		<script type="text/javascript" src="js/colorpicker.js"></script>
-	</head>
-	<body>
-		<div>
-			<header>
+<!doctype html>
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Majowe spiżania</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<!-- 1140px Grid styles for IE -->
+	<!--[if lte IE 9]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" /><![endif]-->
+
+	<!-- The 1140px Grid - http://cssgrid.net/ -->
+	<link rel="stylesheet" href="css/1140.css" type="text/css" media="screen" />
+	
+	<!-- Your styles -->
+	<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" />
+	
+	<link rel="stylesheet" href= "css/style.css" type="text/css" />
+	<link rel="stylesheet" href="css/colorpicker.css" type="text/css" />
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/colorpicker.js"></script>
+	
+	<!--css3-mediaqueries-js - http://code.google.com/p/css3-mediaqueries-js/ - Enables media queries in some unsupported browsers-->
+	<script type="text/javascript" src="js/css3-mediaqueries.js"></script>
+	
+	<!--Delete embedded styles, just for example.-->
+	<style type="text/css">
+	
+	body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+	
+	.container p {
+	color: #fff;
+	line-height: 100px;
+	background: #000;
+	text-align: center;
+	margin: 20px 0 0 0;
+	}
+	
+	</style>
+
+</head>
+
+
+<body>
+
+
+
+<div class="container">
+	<header>
 				<h1>Majowa spiżarnia</h1>
 			</header>
+	<div class="row">
+		<div class="threecol">
 			<nav>
 				<ul>
 					<li><a href="#" id="stock_report_show">Raport stanów</a></li>
@@ -31,64 +63,64 @@
 					<li><a href="#" id="show_open">Otwarte</a></li>
 					<li><a href="#" id="settings_show">Ustawienia</a></li>
 					<li><a href="#" id="add_material_show">Dodaj materiał</a></li>
-					<li><a href="/">Raport stanów</a></li>
 				</ul>
 			</nav>
-			<div>
-				<div id="add_material">
-					<button class="close">Zamknij</button>
-					<h3>Dodaj produkt</h3>
-					<div>Marka:<br>
-					<input type="text" id="m_marka" /></div>
-					<div>Nazwa:<br>
-					<input type="text" id="m_nazwa" /></div>
-					<div id="cat_dropdown"></div>
-					Składniki:<br>
-					<div><input type="text" id="s_nazwa_1" class="skladnik" /> nowość:<input type="checkbox" id="s_1_now" class="nowosc" /><a href="#" id="s_1" class="add_s">Dodaj kolejny</a></div>
-					<button id="save_mat">Zapisz</button>	
-				</div>
-				<div id="add_shopping">
-					<button class="close">Zamknij</button>
-					<h3>Dodaj zakupy</h3>
-					<div>Wybierz produkt z listy</div>
-					<div class="mat_list"></div>
-					<div>Nie ma na liście? <a href="#" id="add_material_show2">Dodaj materiał</a></div>
-					<button id="save_shopping" class="save">Zapisz zakupy</button>
-					
-				</div>
-				<div id="add_meal">
-					<button class="close">Zamknij</button>
-					<h3>Dodaj posiłek</h3>
-					<div>Wybierz produkt z listy</div>
-					<div class="mat_list"></div>
-					<div>Nie ma na liście? <a href="#" id="add_shopping_show2">Dodaj zakupy</a></div>
-					<button id="save_meal" class="save">Zapisz posiłek</button>
-				</div>
-				<div id="stock_report">
-					<button class="close">Zamknij</button>
-					<h3>Raport stanów</h3>
-					<div id="stock"></div>
-				</div>
-				<div id="settings">
-					<button class="close">Zamknij</button>
-					<h3>Ustawienia</h3>
-					<div>Obecne kategorie:</div>
-					<div id="cats"></div>
-					<div>Nowa kategoria:</div>
-					<div>Nazwa:<input type="text" id="category" /> Kolor:<input type="text" id="cat_color" /><button id="add_cat">Dodaj</button></div>
-				</div>
-				<div id="open">
-					<button class="close">Zamknij</button>
-					<h3>Otwarte słoiki</h3>
-
-				</div>
-			</div>
-			<footer>
-				<p>
-					&copy; Copyright  by czapajev
-				</p>
-			</footer>
-			<div id="status"></div>
 		</div>
-	</body>
+		<div class="ninecol last">
+			<div id="add_material">
+				<button class="close">Zamknij</button>
+				<h3>Dodaj produkt</h3>
+				<div>Marka:<br>
+				<input type="text" id="m_marka" /></div>
+				<div>Nazwa:<br>
+				<input type="text" id="m_nazwa" /></div>
+				<div id="cat_dropdown"></div>
+				Składniki:<br>
+				<div><input type="text" id="s_nazwa_1" class="skladnik" /> nowość:<input type="checkbox" id="s_1_now" class="nowosc" /><a href="#" id="s_1" class="add_s">Dodaj kolejny</a></div>
+				<button id="save_mat" class="save">Zapisz</button>	
+			</div>
+			<div id="add_shopping">
+				<button class="close">Zamknij</button>
+				<h3>Dodaj zakupy</h3>
+				<div>Wybierz produkt z listy</div>
+				<div class="mat_list"></div>
+				<div>Nie ma na liście? <a href="#" id="add_material_show2">Dodaj materiał</a></div>
+				<button id="save_shopping" class="save">Zapisz zakupy</button>
+				
+			</div>
+			<div id="add_meal">
+				<button class="close">Zamknij</button>
+				<h3>Dodaj posiłek</h3>
+				<div>Wybierz produkt z listy</div>
+				<div class="mat_list"></div>
+				<div>Nie ma na liście? <a href="#" id="add_shopping_show2">Dodaj zakupy</a></div>
+				<button id="save_meal" class="save">Zapisz posiłek</button>
+			</div>
+			<div id="stock_report">
+				<button class="close">Zamknij</button>
+				<h3>Raport stanów</h3>
+				<div id="stock"></div>
+			</div>
+			<div id="settings">
+				<button class="close">Zamknij</button>
+				<h3>Ustawienia</h3>
+				<div>Obecne kategorie:</div>
+				<div id="cats"></div>
+				<div>Nowa kategoria:</div>
+				<div>Nazwa:<input type="text" id="category" /> Kolor:<input type="text" id="cat_color" /><button id="add_cat">Dodaj</button></div>
+			</div>
+			<div id="open">
+				<button class="close">Zamknij</button>
+				<h3>Otwarte słoiki</h3>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="status"></div>
+
+
+</body>
+
 </html>
