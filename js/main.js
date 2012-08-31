@@ -140,11 +140,11 @@ function show_list(fade, referer, move, button) {
 				//alert($(this).parent().parent().attr('id'));
 				saveData += "mat[" + i +"]=" + $(this).parent().parent().attr('id') + "&qty[" + i + "]=" + $(this).val() +"&";
 				if(referer == '#add_meal') {
-					if($(this).parent().next().next().children().eq(0).val() != '') {
-						saveData += "smak[" + i +"]=" + $(this).parent().next().next().children().eq(0).val() + "&";
+					if($(this).parent().parent().next().children().eq(2).children().eq(0).val() != '') {
+						saveData += "smak[" + i +"]=" + $(this).parent().parent().next().children().eq(2).children().eq(0).val() + "&";
 					}
-					if($(this).parent().next().next().next().children().eq(0).val() != '') {
-						saveData += "comment[" + i +"]=" + $(this).parent().next().next().next().children().eq(0).val() + "&";
+					if($(this).parent().parent().next().children().eq(3).children().eq(1).val() != '') {
+						saveData += "comment[" + i +"]=" + $(this).parent().parent().next().children().eq(1).children().eq(0).val() + "&";
 					}
 				}
 				i++;
@@ -272,6 +272,9 @@ hide = function(par) {
 function show_status(info, dur, par) {
 	$('#status').html(info).fadeIn();
 	setTimeout(hide, dur, par);
+	$('#status').click(function() {
+		$(this).fadeOut();
+	})
 }
 function check_partial() {
 	$.ajax({

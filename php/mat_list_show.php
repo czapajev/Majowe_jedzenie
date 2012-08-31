@@ -3,8 +3,8 @@ require_once('mysql_connect.php');
 if(isset($_POST['ref'])) {
 	$ref= $_POST['ref'];
 	if($ref == '#add_meal') {
-		$add_head = '<td>Otwarte</td><td>Smak</td><td>Komentarz</td>';
-		$add_line = '<td><input type="text" class="smak" size="6" /></td><td><input type="text" class="comment" /></td>';
+		$add_head = '<td>Otwarte</td>';//<td>Smak</td><td>Komentarz</td>';
+		$add_line = '</tr><tr><td>&nbsp;</td><td colspan="2">Komentarz: <input type="text" class="comment" /></td><td colspan="4">Smak: <input type="text" class="smak" size="6" /></td>';
 	} else {
 		$add_head = '';
 		$add_line = '';
@@ -19,9 +19,10 @@ GROUP BY mat_id";
 $result = mysql_query($query);
 echo '<table>
 		<tr>
+			<td class="cat_show">Kat.</td>
 			<td>Marka</td>
 			<td>Nazwa</td>
-			<td class="cat_show">Kat.</td>
+			
 			<td>Ilość</td>
 			<td>Stan</td>' . $add_head . '
 		</tr>';
@@ -41,11 +42,12 @@ while($row = mysql_fetch_array($result, MYSQL_BOTH)) {
 	} else {
 		$ins = '';
 	}
-	echo '<tr id="' . $row['mat_id'] . '">
+	echo '<tr id="' . $row['mat_id'] . '" class="mat_line">
+		<td class="cat_show" style="background-color: ' . $r['color'] . '">&nbsp;</td>
 		<td>' . $row['brand'] . '</td>
 		<td>' . $row['name'] .'</td>
-		<td class="cat_show" style="background-color: ' . $r['color'] . '">&nbsp;</td>
-		<td><button class="dec">-</button><input type="text" size="3" class="mat_list_line" value="0" /><button class="inc">+</button></td>
+		
+		<td><button class="dec">-</button><input type="text" size="2" class="mat_list_line" value="0" /><button class="inc">+</button></td>
 		<td>' . $row['suma'] . '</td>' . $ins . $add_line .  '
 		</tr>';
 }

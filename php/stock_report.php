@@ -10,12 +10,12 @@ echo '<table>
 			<td>Marka</td>
 			<td>Nazwa</td>
 			<td class="cat_show">Kat.</td>
-			<td>Zapas</td>
-			<td>Zakupy</td>
-			<td>Posiłki</td>
+			<td>St.</td>
+			<!--<td> + </td>
+			<td> - </td>-->
 			<td>Smak</td>
-			<td>Wprowadzone</td>
-			<td>Komentarz</td>
+			<td>Wpr.</td>
+			<td>Kom</td>
 		</tr>';
 while($row = mysql_fetch_array($result)) {
 	$det = array();
@@ -43,9 +43,9 @@ while($row = mysql_fetch_array($result)) {
 			<td>' . $row['brand'] . '</td>
 			<td>' . $row['name'] . '</td>
 			<td class="cat_show" style="background-color: ' . $r['color'] . '">&nbsp;</td>
-			<td>' . $row['suma'] . '</td>
-			<td>' . $det['101'] . '</td>
-			<td>' . $det['601'] . '</td>
+			<td class="stock">' . $row['suma'] . '</td>
+			<!--<td>' . $det['101'] . '</td>
+			<td>' . $det['601'] . '</td>-->
 			<td>' . $row['smak'] . '</td>
 			<td>' . $row['wprowadzone'] . '</td>
 			<td>' . $row['comment'] . '</td>
