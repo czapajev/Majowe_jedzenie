@@ -101,6 +101,55 @@ $(document).ready(function() {
 			}
 		})
 	});
+	$('#show_open').click(function() {
+		$('#open').siblings().fadeOut(function() {
+			$.ajax({
+				url: "php/open.php",
+				success: function(data) {
+					$('#open_report').html(data);
+					$('#open').fadeIn();
+					$('.trash').unbind('click').click(function() {
+						//alert('dupa');
+						tid = $(this).attr('id').slice(6);
+						sendData = "tid=" + tid + "&action=utylizacja";
+						u = $(this);
+						$.ajax({
+							url: "php/utylization.php",
+							type: "POST",
+							data: sendData,
+							success: function(data) {
+								if(data == 1) {
+									show_status('Usunieto', 1000,new Array(false, '#add_meal'));
+									u.parent().parent().detach();
+								} else {
+									show_status('Wystąpił błąd', 1000,new Array(false, '#add_meal'));
+								}
+							}
+						})
+					});
+					$('.eat').unbind('click').click(function() {
+						//alert('dupa');
+						tid = $(this).attr('id').slice(4);
+						sendData = "tid=" + tid + "&action=zjedzone";
+						u = $(this);
+						$.ajax({
+							url: "php/utylization.php",
+							type: "POST",
+							data: sendData,
+							success: function(data) {
+								if(data == 1) {
+									show_status('Zjedzone', 1000,new Array(false, '#add_meal'));
+									u.parent().parent().detach();
+								} else {
+									show_status('Wystąpił błąd', 1000,new Array(false, '#add_meal'));
+								}
+							}
+						})
+					});
+				}
+			});
+		});
+	});
 
 });
 
@@ -280,7 +329,11 @@ function check_partial() {
 	$.ajax({
 		url: "php/check_partial.php",
 		success: function(data) {
-			show_status(data, 5000, new Array(false, '#add_meal'));
+			//alert(data);
+			if(data.length >0) {
+			//show_status(data, 5000, new Array(false, '#add_meal'));
+				$('#show_open').click();
+			}
 		}
 	})
 }

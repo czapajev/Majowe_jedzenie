@@ -102,3 +102,9 @@ nav a {
 h3 {
 	text-align: center;
 }
+.brand {
+	width: 64px;
+}
+.open_name {
+	width: 150px;
+}
